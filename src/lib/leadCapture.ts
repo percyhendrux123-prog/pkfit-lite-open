@@ -42,6 +42,7 @@ export async function captureEmail(
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(request),
+      keepalive: true,
     });
     if (!response.ok) {
       return { ok: false, error: "Email capture is not configured." };
@@ -50,4 +51,19 @@ export async function captureEmail(
   } catch {
     return { ok: false, error: "Email capture is not reachable." };
   }
+}
+
+// Same as captureEmail, but never waits longer than `ms`. On timeout it
+// reports { ok: false, error: "timeout" }; the request itself carries on.
+export function captureEmailWithin(
+  request: CaptureEmailRequest,
+  ms: number,
+): Promise<CaptureEmailResult> {
+  return new Promise((resolve) => {
+    const timer = setTimeout(() => resolve({ ok: false, error: "timeout" }), ms);
+    void captureEmail(request).then((result) => {
+      clearTimeout(timer);
+      resolve(result);
+    });
+  });
 }

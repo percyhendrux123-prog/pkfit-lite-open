@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { captureEmail, type LeadSource } from "../lib/leadCapture";
+import { captureEmailWithin, type LeadSource } from "../lib/leadCapture";
+
+const CAPTURE_WAIT_MS = 2500;
 
 interface EmailCaptureProps {
   source: LeadSource;
@@ -26,11 +28,12 @@ export function EmailCapture({
       return;
     }
     setStatus("sending");
-    const result = await captureEmail({ email, source });
-    // The lead is recorded on a best-effort basis — if the Google Sheets
-    // write fails, that never blocks the user. The tools are free; this
-    // form only ever captures a lead (see src/lib/access.ts).
-    setStatus(result.ok ? "done" : "done");
+    // Best effort, and never a wall: wait at most CAPTURE_WAIT_MS for the
+    // Sheet write, then open the tools whatever happened. A slow or failed
+    // write never blocks the visitor; the request keeps going in the
+    // background (keepalive).
+    await captureEmailWithin({ email, source }, CAPTURE_WAIT_MS);
+    setStatus("done");
     onCaptured?.(email);
   }
 
