@@ -23,10 +23,19 @@ export interface ServiceAccountConfig {
   sheetId: string;
 }
 
+// GOOGLE_SHEET_ID may hold the bare id or the whole Sheet URL
+// (https://docs.google.com/spreadsheets/d/<id>/edit...). Pasting the URL is
+// an easy mistake, and with it the append call hits a 404, so accept both.
+export function normaliseSheetId(raw: string): string {
+  const trimmed = raw.trim();
+  const match = trimmed.match(/\/spreadsheets\/d\/([A-Za-z0-9_-]+)/);
+  return match ? match[1] : trimmed;
+}
+
 export function getServiceAccountConfig(): ServiceAccountConfig | null {
   const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const privateKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY;
-  const sheetId = process.env.GOOGLE_SHEET_ID;
+  const sheetId = normaliseSheetId(process.env.GOOGLE_SHEET_ID ?? "");
 
   if (!clientEmail || !privateKeyRaw || !sheetId) {
     return null;
