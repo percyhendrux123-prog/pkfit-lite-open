@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Client code calls relative paths (/api/*) — never a hardcoded domain.
+# This redirect maps those calls to the actual Netlify Functions path.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

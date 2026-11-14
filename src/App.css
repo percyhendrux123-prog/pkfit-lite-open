@@ -1,0 +1,1071 @@
+/* Lite Tools — style pass. Charcoal base, gold accent (#c9a84c) used
+   deliberately, Bebas Neue for display type, restrained body copy.
+   Same design vocabulary as THE STANDARD APP post-polish. Styling only —
+   no calculation logic lives in this file. */
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 20px 88px;
+  font-family: var(--pk-font-body);
+  color: var(--pk-text);
+  /* Transparent, not --pk-bg: the dot grid lives on <body> and an opaque
+     background here would paint straight over it. */
+  background: transparent;
+  min-height: 100vh;
+}
+
+/* ---------- Header ---------- */
+
+.app-header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--pk-border-soft);
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  font-family: var(--pk-font-display);
+  font-weight: 400;
+  font-size: 44px;
+  letter-spacing: 1.5px;
+  line-height: 1;
+  margin: 0 0 10px;
+  color: var(--pk-text);
+}
+
+.app-subhead {
+  color: var(--pk-gray);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 46ch;
+}
+
+/* ---------- Tabs ---------- */
+
+.tabs {
+  display: flex;
+  gap: var(--pk-gap);
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--pk-border-soft);
+}
+
+.tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--pk-gray);
+  padding: 10px 16px 12px;
+  cursor: pointer;
+  font-family: var(--pk-font-display);
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.15s ease;
+}
+
+.tab:hover {
+  color: var(--pk-text);
+}
+
+.tab-active,
+.tab-active:hover {
+  color: var(--pk-gold);
+  border-bottom-color: var(--pk-gold);
+}
+
+/* ---------- Tool sections ---------- */
+
+.tool h2 {
+  font-family: var(--pk-font-display);
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+  margin: 0 0 6px;
+  color: var(--pk-text);
+}
+
+.tool-copy {
+  color: var(--pk-gray);
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 24px;
+  max-width: 54ch;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  color: var(--pk-gray);
+  margin-bottom: 7px;
+}
+
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+/* ---------- Inputs ---------- */
+
+input,
+select {
+  width: 100%;
+  padding: 11px 12px;
+  background: var(--pk-bg-elevated);
+  border: 1px solid var(--pk-border);
+  color: var(--pk-text);
+  border-radius: var(--pk-radius);
+  font-size: 14px;
+  font-family: var(--pk-font-body);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--pk-gold);
+  box-shadow: 0 0 0 3px var(--pk-gold-dim);
+}
+
+/* ---------- Pills ---------- */
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  background: var(--pk-bg-elevated);
+  border: 1px solid var(--pk-border);
+  color: var(--pk-text);
+  padding: 9px 16px;
+  border-radius: var(--pk-radius);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--pk-font-body);
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.pill:hover {
+  border-color: var(--pk-gold-line);
+}
+
+.pill-active {
+  border-color: var(--pk-gold);
+  color: var(--pk-gold);
+  background: var(--pk-gold-dim);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 13px;
+  color: #cfcfc8;
+  margin-bottom: 9px;
+  line-height: 1.4;
+}
+
+.checkbox-row input {
+  width: auto;
+  margin-top: 2px;
+  accent-color: var(--pk-gold);
+}
+
+/* ---------- Buttons ---------- */
+
+button.primary {
+  background: var(--pk-gold);
+  color: var(--pk-base);
+  border: none;
+  padding: 13px 24px;
+  border-radius: var(--pk-radius);
+  font-family: var(--pk-font-display);
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+
+button.primary:hover {
+  background: #d9bb63;
+}
+
+button.primary:active {
+  transform: scale(0.98);
+}
+
+button.primary.btn-confirm {
+  animation: pk-confirm-pulse 0.6s ease-out;
+}
+
+button.secondary {
+  background: none;
+  border: 1px solid var(--pk-gold);
+  color: var(--pk-gold);
+  padding: 11px 18px;
+  border-radius: var(--pk-radius);
+  font-family: var(--pk-font-display);
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 18px;
+  transition: background 0.15s ease;
+}
+
+button.secondary:hover {
+  background: var(--pk-gold-dim);
+}
+
+/* ==================================================================
+   LANDING — email step and hero
+   ------------------------------------------------------------------
+   Mobile-first: base rules target a 375px iPhone, then widen at 560 /
+   768 / 1024. Component language is lifted from the live site — mono
+   kicker, two-tone Anton head, hairline rules, gold CTA with glow —
+   over app-side bento + glass surfaces, since this is a small app
+   rather than a marketing page.
+   ================================================================== */
+
+.app-gate {
+  max-width: none;
+  width: 100%;
+  padding: 0;
+  /* dvh keeps the gate from jumping when mobile Safari's chrome hides. */
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.gate-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 18px 22px 40px;
+  /* Home-indicator clearance on notched iPhones (viewport-fit=cover). */
+  padding-bottom: calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---------- Wordmark row ---------- */
+
+.wordmark-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 18px;
+  border-bottom: var(--pk-hairline) solid var(--pk-border);
+}
+
+.wordmark {
+  font-family: var(--pk-font-mono);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 4px;
+  color: var(--pk-text);
+}
+
+.wordmark-tag {
+  font-family: var(--pk-font-mono);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: var(--pk-gold);
+  border: var(--pk-hairline) solid var(--pk-gold-line);
+  border-radius: 999px;
+  padding: 3px 9px 2px;
+}
+
+/* ---------- Hero ---------- */
+
+.gate-hero {
+  padding: 38px 0 0;
+}
+
+.kicker {
+  font-family: var(--pk-font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pk-gold);
+  margin: 0 0 16px;
+}
+
+.hero-title {
+  /* Anton is reserved for exactly one head per page — the live site's
+     rule. Everything else uses Bebas. */
+  font-family: var(--pk-font-hero);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(38px, 11.5vw, 68px);
+  line-height: 0.95;
+  letter-spacing: 0.5px;
+  margin: 0 0 20px;
+}
+
+.hero-lead {
+  color: var(--pk-text);
+}
+
+.hero-trail {
+  color: var(--pk-gray);
+}
+
+.hero-copy {
+  font-family: var(--pk-font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--pk-copy);
+  margin: 0 0 16px;
+  max-width: 50ch;
+}
+
+.hero-meta {
+  font-family: var(--pk-font-mono);
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--pk-gray-soft);
+  margin: 0;
+  max-width: 46ch;
+}
+
+/* ---------- Manifest tiles (bento) ---------- */
+
+.manifest {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--pk-gap);
+}
+
+.manifest-tile {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  background: var(--pk-bg-elevated);
+  border: var(--pk-hairline) solid var(--pk-border);
+  border-radius: var(--pk-radius);
+  padding: 15px 17px;
+}
+
+.manifest-index {
+  flex-shrink: 0;
+  font-family: var(--pk-font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--pk-gold);
+}
+
+.manifest-name {
+  font-family: var(--pk-font-display);
+  font-size: 21px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pk-text);
+  line-height: 1;
+}
+
+.manifest-desc {
+  /* On the narrow single-column layout this sits flush right, which
+     keeps each tile to one compact line on a 375px screen. */
+  margin-left: auto;
+  text-align: right;
+  font-family: var(--pk-font-mono);
+  font-size: 11.5px;
+  color: var(--pk-gray);
+  line-height: 1.3;
+}
+
+/* ---------- Paywall (glass over gold tile) ---------- */
+
+.paywall {
+  margin-top: 32px;
+  padding: 24px 20px;
+  text-align: left;
+  border: var(--pk-hairline) solid var(--pk-gold-line);
+  border-radius: var(--pk-radius);
+  background: linear-gradient(
+    145deg,
+    rgba(26, 22, 16, 0.92),
+    rgba(14, 14, 14, 0.78)
+  );
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.paywall-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.paywall-price {
+  font-family: var(--pk-font-display);
+  font-size: 54px;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: var(--pk-gold);
+}
+
+.paywall-price-note {
+  font-family: var(--pk-font-mono);
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--pk-gray);
+}
+
+.paywall-copy {
+  font-family: var(--pk-font-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--pk-copy);
+  margin: 0 0 18px;
+}
+
+/* The full-width gold CTA — Bebas at 3px tracking with the live site's
+   gold glow. Scoped to .paywall so the in-tool buttons keep their own
+   tighter sizing. */
+.paywall button.primary {
+  width: 100%;
+  margin-top: 0;
+  padding: 15px 24px;
+  font-size: 20px;
+  letter-spacing: 3px;
+  border-radius: var(--pk-radius-btn);
+  box-shadow: var(--pk-gold-glow);
+}
+
+.gate-note {
+  font-family: var(--pk-font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--pk-gray-soft);
+  margin: 12px 0 0;
+}
+
+/* Support address on the failed-verification screen. Lifted above the
+   surrounding dim note colour so a stranded buyer can actually find it,
+   and given a wide tap target for thumbs. */
+.gate-link {
+  color: var(--pk-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  /* Long address, narrow phone — break rather than overflow the panel. */
+  word-break: break-word;
+}
+
+.gate-link:hover {
+  color: #d9bb63;
+}
+
+.gate-status {
+  font-family: var(--pk-font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pk-gray);
+  text-align: center;
+  padding-top: 40vh;
+}
+
+/* ---------- Email capture (nested card inside the paywall) ---------- */
+
+.email-capture {
+  margin-top: 26px;
+  padding: 18px;
+  border: 1px solid var(--pk-gold-line);
+  border-radius: var(--pk-radius);
+  background: rgba(22, 22, 20, 0.55);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Inside the paywall the glass is already established, so this drops to
+   the live site's flat .card-nested treatment instead of stacking a
+   second blur on top of the first. */
+.paywall .email-capture {
+  margin-top: 0;
+  padding: 14px 16px;
+  border: var(--pk-hairline) solid var(--pk-border);
+  border-radius: 8px;
+  background: rgba(8, 8, 8, 0.55);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  text-align: left;
+}
+
+.email-capture label {
+  display: block;
+  font-family: var(--pk-font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--pk-copy);
+  margin-bottom: 4px;
+}
+
+.email-capture-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.email-capture-row input {
+  flex: 1;
+  min-width: 0;
+  background: rgba(8, 8, 8, 0.6);
+  font-family: var(--pk-font-mono);
+  /* 16px stops iOS Safari zooming the viewport on focus. */
+  font-size: 16px;
+}
+
+.email-capture-row button {
+  flex-shrink: 0;
+  background: var(--pk-gold);
+  color: var(--pk-base);
+  border: none;
+  padding: 0 18px;
+  border-radius: var(--pk-radius-btn);
+  cursor: pointer;
+  font-family: var(--pk-font-display);
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background 0.15s ease;
+}
+
+.email-capture-row button:hover {
+  background: #d9bb63;
+}
+
+.email-capture-row button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.field-error {
+  font-family: var(--pk-font-mono);
+  color: var(--pk-danger);
+  font-size: 11.5px;
+  margin-top: 8px;
+}
+
+/* ---------- Landing breakpoints ---------- */
+
+@media (min-width: 560px) {
+  /* Enough room for three across — tiles switch from one-line rows to
+     stacked cards. */
+  .manifest {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .manifest-tile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    padding: 17px;
+  }
+  .manifest-desc {
+    margin-left: 0;
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .gate-wrap {
+    max-width: 720px;
+    padding: 26px 32px 64px;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+  .gate-hero {
+    padding-top: 52px;
+  }
+  .hero-copy {
+    font-size: 15px;
+  }
+  /* Wide enough to keep the credential line on one row once there's room
+     — at 46ch it orphans the last clause. */
+  .hero-meta {
+    max-width: 68ch;
+  }
+  .paywall {
+    padding: 30px 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gate-wrap {
+    max-width: 860px;
+  }
+  .gate-hero {
+    padding-top: 64px;
+  }
+  .hero-title {
+    font-size: 72px;
+  }
+}
+
+/* ---------- Results ---------- */
+
+.result {
+  position: relative;
+  margin-top: 26px;
+  padding: 22px;
+  border: 1px solid var(--pk-border);
+  border-radius: var(--pk-radius);
+  background: var(--pk-bg-card);
+  animation: pk-result-in 0.35s ease-out;
+}
+
+.result h3 {
+  font-family: var(--pk-font-display);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  margin: 0 0 16px;
+  color: var(--pk-text);
+}
+
+.result-blocked {
+  border-color: var(--pk-danger);
+}
+
+.result p {
+  font-size: 14px;
+  color: var(--pk-gray);
+  line-height: 1.55;
+}
+
+/* Confirmation micro-interaction — one clean pulse per result generated */
+
+.confirm-badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--pk-gold);
+  color: var(--pk-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.4);
+  animation: pk-badge-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+    pk-badge-out 0.4s ease-in 1.4s forwards;
+}
+
+/* ---------- Bento grid — macro / metric tiles ---------- */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--pk-gap);
+  margin-bottom: 16px;
+}
+
+.bento-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.bento-grid-2 .bento-tile-hero {
+  grid-column: auto;
+}
+
+.bento-tile {
+  background: var(--pk-bg-elevated);
+  border: 1px solid var(--pk-border);
+  border-radius: var(--pk-radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bento-tile-hero {
+  grid-column: 1 / -1;
+  background: linear-gradient(
+    145deg,
+    var(--pk-bg-elevated),
+    var(--pk-bg-card)
+  );
+  border-color: var(--pk-gold-line);
+  padding: 20px;
+}
+
+.bento-label {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--pk-gray);
+}
+
+.bento-value {
+  font-family: var(--pk-font-display);
+  font-size: 34px;
+  line-height: 1;
+  color: var(--pk-gold);
+  letter-spacing: 0.5px;
+}
+
+.bento-tile-hero .bento-value {
+  font-size: 48px;
+}
+
+.bento-unit {
+  font-size: 12px;
+  color: var(--pk-gray);
+  letter-spacing: 0.4px;
+}
+
+.bento-unit-inline {
+  font-family: var(--pk-font-body);
+  font-size: 16px;
+  color: var(--pk-gray);
+  margin-left: 3px;
+}
+
+.result-note {
+  margin-top: 4px;
+}
+
+/* ---------- Training split — day tiles ---------- */
+
+.split-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--pk-gap);
+  align-items: start;
+  margin-bottom: 8px;
+}
+
+.result-day {
+  margin-bottom: 0;
+  padding: 16px;
+}
+
+.result-day h4 {
+  font-family: var(--pk-font-display);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: var(--pk-gold);
+  margin: 0 0 10px;
+}
+
+.result ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.result li {
+  font-size: 13px;
+  color: var(--pk-text);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--pk-border-soft);
+}
+
+.result li:last-child {
+  border-bottom: none;
+}
+
+.disclaimer {
+  color: var(--pk-gray-soft);
+  font-size: 12px;
+  margin-top: 18px;
+}
+
+.app-footer {
+  margin-top: 48px;
+  color: var(--pk-gray-soft);
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* On the landing page the footer becomes a mono terms line under a
+   hairline, matching the live site's footer register. */
+.gate-wrap .app-footer {
+  margin-top: 34px;
+  padding-top: 20px;
+  border-top: var(--pk-hairline) solid var(--pk-border);
+  font-family: var(--pk-font-mono);
+  font-size: 10.5px;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.footer-link {
+  display: inline-block;
+  margin-top: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--pk-gray-soft);
+  font: inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes pk-result-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pk-badge-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pk-badge-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes pk-confirm-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.5);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(201, 168, 76, 0);
+  }
+}
+
+@media (max-width: 480px) {
+  .bento-grid,
+  .bento-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bento-tile-hero {
+    grid-column: 1 / -1;
+  }
+  .app-header h1 {
+    font-size: 36px;
+  }
+}
+
+/* ==================================================================
+   IN-APP BROWSER NOTICE
+   ------------------------------------------------------------------
+   Shown above the paywall when the page is running inside Instagram /
+   Facebook / TikTok / Messenger / Threads. Uses the danger tone rather
+   than gold: this is a warning, not an offer, and it must not read as
+   part of the sales copy. Never rendered in a normal browser.
+   ================================================================== */
+
+.inapp-notice {
+  border: 1px solid var(--pk-danger);
+  border-radius: var(--pk-radius);
+  background: var(--pk-bg-card);
+  padding: 16px 16px 14px;
+  margin: 0 0 24px;
+}
+
+.inapp-title {
+  font-family: var(--pk-font-display);
+  font-size: 19px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--pk-danger);
+  margin: 0 0 8px;
+}
+
+.inapp-copy {
+  font-family: var(--pk-font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--pk-copy);
+  margin: 0 0 14px;
+}
+
+/* Same visual weight as a secondary button, but an <a> on Android (intent
+   URL) and a <button> on iOS (clipboard) — so both are styled here. */
+.inapp-action {
+  display: inline-block;
+  background: none;
+  border: 1px solid var(--pk-danger);
+  color: var(--pk-danger);
+  padding: 11px 18px;
+  border-radius: var(--pk-radius-btn);
+  font-family: var(--pk-font-display);
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  /* Comfortable thumb target on a phone. */
+  min-height: 44px;
+  line-height: 22px;
+}
+
+.inapp-steps {
+  font-family: var(--pk-font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--pk-gray);
+  margin: 12px 0 0;
+}
+
+.inapp-steps strong {
+  color: var(--pk-text);
+  font-weight: 500;
+}
+
+.inapp-url {
+  color: var(--pk-text);
+  word-break: break-all;
+}
+
+.inapp-dismiss {
+  display: block;
+  background: none;
+  border: none;
+  padding: 12px 0 0;
+  margin: 4px 0 0;
+  font-family: var(--pk-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  color: var(--pk-gray-soft);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- Homepage promo stage ----------
+   Empty plate and playing video share the exact same 16:9 box.
+   The stage is the subject of the page, not a sidebar widget. */
+
+.gate-wrap-home {
+  max-width: min(1100px, 100%);
+}
+
+.promo-stage {
+  margin: 22px 0 8px;
+}
+
+.promo-stage-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #050505;
+  border: var(--pk-hairline) solid var(--pk-gold-line);
+  border-radius: var(--pk-radius);
+  overflow: hidden;
+}
+
+.promo-stage-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+  background: #000;
+}
+
+.promo-stage-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(201, 168, 76, 0.06), transparent 42%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 59px,
+      rgba(201, 168, 76, 0.05) 60px
+    );
+}
+
+.promo-stage-kicker {
+  font-family: var(--pk-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--pk-gold);
+  margin: 0 0 12px;
+}
+
+.promo-stage-empty-title {
+  font-family: var(--pk-font-display);
+  font-size: 32px;
+  letter-spacing: 0.06em;
+  margin: 0 0 10px;
+  color: var(--pk-text);
+}
+
+.promo-stage-empty-copy {
+  margin: 0;
+  max-width: 36ch;
+  font-family: var(--pk-font-mono);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--pk-gray);
+}
+
+.promo-link-field {
+  margin: 14px 0 6px;
+}
+
+.promo-link-field label,
+.field-hint {
+  display: block;
+  font-size: 12px;
+  color: var(--pk-gray);
+  margin-bottom: 7px;
+}
+
+.field-hint {
+  margin-top: 8px;
+  line-height: 1.45;
+}
+
