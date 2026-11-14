@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="https://deployaxiom.com"><img src=".github/deploy-axiom-lockup.svg" alt="Deploy Axiom™" width="420"></a>
+</p>
+
 # Lite Tools
 
 Three fitness calculators on one page, with fixed formulas and no accounts:
@@ -74,3 +78,7 @@ Anton, Bebas Neue and DM Mono are self-hosted in `public/fonts` under the SIL Op
 ## Licence
 
 Code: MIT, see `LICENSE`. Names and marks are not licensed; see `TRADEMARKS.md`.
+
+---
+
+Built by [Deploy Axiom™](https://deployaxiom.com). The code is MIT licensed. The Deploy Axiom name and logo are trademarks of Deploy Axiom LLC and are not covered by the licence; see [TRADEMARKS.md](TRADEMARKS.md).
